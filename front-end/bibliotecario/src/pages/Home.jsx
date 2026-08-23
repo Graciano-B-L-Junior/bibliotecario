@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom'
 import './styles/Home.css'
 
 function Home() {
@@ -44,12 +44,11 @@ function Home() {
             </section>
 
             <section className="cta-row">
-                <button className="cta-primary">Cadastre-se para Começar</button>
-                <button className="cta-secondary">Entrar na Sua Estante</button>
+                <Link to="/register" className="cta-primary">Cadastre-se para Começar</Link>
             </section>
 
             <footer className="page-footer">
-                <p>Já tem uma conta? <a href="#login">Entrar →</a></p>
+                <p>Já tem uma conta? <Link to="/login">Entrar →</Link></p>
             </footer>
 
 
