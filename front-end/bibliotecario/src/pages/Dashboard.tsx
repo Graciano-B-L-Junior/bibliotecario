@@ -91,7 +91,7 @@ function Dashboard() {
                 <header className="dashboard-header">
                     <div className="dashboard-search">⌕ <span>Buscar livros, autores, gêneros...</span></div>
                     <nav className="dashboard-header-nav" aria-label="Ações da conta">
-                        <a href="#novo">⊕ Adicionar Livro</a>
+                        <Link to="/book/new">⊕ Adicionar Livro</Link>
                         <Link to="/">⇥ Sair</Link>
                     </nav>
                 </header>
@@ -157,7 +157,7 @@ function Dashboard() {
                         <section className="rail-card add-book-card">
                             <h2>Adicionar Novo Livro</h2>
                             <p>Gerencie sua coleção de livros.</p>
-                            <button type="button">Adicionar Novo Livro</button>
+                            <Link to="/book/new">Adicionar Novo Livro</Link>
                         </section>
                     </aside>
                 </main>

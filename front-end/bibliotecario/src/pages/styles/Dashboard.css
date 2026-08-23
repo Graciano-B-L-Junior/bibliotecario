@@ -241,7 +241,8 @@ body,
 }
 
 .progress-button,
-.add-book-card button {
+.add-book-card button,
+.add-book-card a {
     border: 0;
     border-radius: 5px;
     background: var(--dashboard-green);
@@ -251,7 +252,7 @@ body,
 }
 
 .progress-button { margin-bottom: 15px; padding: 7px 12px; }
-.progress-button:hover, .add-book-card button:hover { background: var(--dashboard-green-dark); }
+.progress-button:hover, .add-book-card button:hover, .add-book-card a:hover { background: var(--dashboard-green-dark); }
 
 .reading-section > h2,
 .collection-section > h2 {
@@ -335,7 +336,8 @@ body,
     margin: -2px 0 10px;
     color: var(--dashboard-muted);
 }
-.add-book-card button { width: 100%; padding: 6px 5px; }
+.add-book-card button,
+.add-book-card a { display: block; width: 100%; box-sizing: border-box; padding: 6px 5px; text-align: center; text-decoration: none; }
 .profile-card > p { align-items: center; }
 
 @media (max-width: 1000px) {
