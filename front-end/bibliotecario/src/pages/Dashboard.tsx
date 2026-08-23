@@ -69,7 +69,11 @@ function Dashboard() {
                     <a href="#concluidos"><span>◷</span>Concluídos</a>
 
                     <p>Gêneros</p>
-                    <button className="genre-select" type="button">Light Novels <span>⌄</span></button>
+                    <select className="genre-select">
+                        <option value="aventura">Aventura</option>
+                        <option value="fantasia">Fantasia</option>
+                        <option value="adulto">Adulto</option>
+                    </select>
 
                     <p>Links Rápidos</p>
                     <a href="#colecao"><span>↗</span>Minha Coleção</a>
@@ -77,25 +81,22 @@ function Dashboard() {
                     <a href="#concluidos"><span>□</span>Concluídos</a>
                 </nav>
 
-                <div className="dashboard-user dashboard-user-bottom">
-                    <span className="avatar">LM</span>
-                    <span><strong>Leo Marques</strong><small>Logado em</small></span>
-                </div>
+                <button className="sidebar-logout" type="button">
+                    <span>⇥</span>
+                    Sair
+                </button>
             </aside>
 
             <div className="dashboard-shell">
                 <header className="dashboard-header">
                     <div className="dashboard-search">⌕ <span>Buscar livros, autores, gêneros...</span></div>
                     <nav className="dashboard-header-nav" aria-label="Ações da conta">
-                        <a className="selected" href="#dashboard">⌂ Dashboard</a>
-                        <a href="#biblioteca">▣ Minha Biblioteca</a>
                         <a href="#novo">⊕ Adicionar Livro</a>
-                        <a href="#perfil">♙ Perfil</a>
                         <a href="#logout">⇥ Sair</a>
                     </nav>
                 </header>
 
-                <main className="dashboard-main">
+                <main className="dashboard-main dashboard-layout">
                     <section className="dashboard-content">
                         <div className="dashboard-heading">
                             <h1>Minha Biblioteca de Leitura</h1>
@@ -157,10 +158,6 @@ function Dashboard() {
                             <h2>Adicionar Novo Livro</h2>
                             <p>Gerencie sua coleção de livros.</p>
                             <button type="button">Adicionar Novo Livro</button>
-                        </section>
-                        <section className="rail-card profile-card">
-                            <h2>Perfil do Usuário</h2>
-                            <p><span className="avatar">LM</span><strong>Leo Marques<small>Logado em</small></strong></p>
                         </section>
                     </aside>
                 </main>
