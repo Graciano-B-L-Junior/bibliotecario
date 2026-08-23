@@ -9,11 +9,6 @@ function Home() {
                     <span className="logo-icon">📚</span>
                     <span>Bibliotecario</span>
                 </div>
-                <nav className="nav-links">
-                    <a href="#recursos">Recursos</a>
-                    <a href="#precos">Preços</a>
-                    <a href="#sobre">Sobre Nós</a>
-                </nav>
             </header>
 
             <main className="hero">

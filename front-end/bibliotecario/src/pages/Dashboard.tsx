@@ -92,7 +92,7 @@ function Dashboard() {
                     <div className="dashboard-search">⌕ <span>Buscar livros, autores, gêneros...</span></div>
                     <nav className="dashboard-header-nav" aria-label="Ações da conta">
                         <a href="#novo">⊕ Adicionar Livro</a>
-                        <a href="#logout">⇥ Sair</a>
+                        <Link to="/">⇥ Sair</Link>
                     </nav>
                 </header>
 
