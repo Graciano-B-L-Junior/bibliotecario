@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './styles/Home.css'
 
 function Home() {
@@ -50,8 +50,6 @@ function Home() {
             <footer className="page-footer">
                 <p>Já tem uma conta? <Link to="/login">Entrar →</Link></p>
             </footer>
-
-
         </div>
     )
 }

@@ -1,7 +1,6 @@
-
 import './styles/Register.css'
 
-function UserRegister(){
+function UserRegister() {
     return (
         <div className="page">
             <form className="form-register">
