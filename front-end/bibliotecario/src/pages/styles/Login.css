@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+	--login-ink: #172a3d;
+	--login-dark: #101d2d;
+	--login-muted: #4b5961;
+	--login-sky: #dff1f7;
+	--login-paper: #fffaf0;
+	--login-green: #3d9c70;
+	--login-green-dark: #2d805a;
+	--login-border: #c7ceca;
+}
+
+.page {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow: hidden;
+	color: var(--login-ink);
+	background:
+		radial-gradient(ellipse at 5% 50%, rgb(215 225 215 / 72%), transparent 17%),
+		radial-gradient(ellipse at 96% 50%, rgb(215 225 215 / 72%), transparent 17%),
+		var(--login-paper);
+	font-family: 'DM Sans', sans-serif;
+}
+
+.page::before,
+.page::after {
+	position: absolute;
+	z-index: 0;
+	bottom: 105px;
+	width: 170px;
+	height: 185px;
+	border: 1px solid rgb(104 137 143 / 24%);
+	background:
+		linear-gradient(145deg, transparent 44%, rgb(126 165 168 / 20%) 45% 49%, transparent 50%),
+		linear-gradient(35deg, transparent 44%, rgb(126 165 168 / 18%) 45% 49%, transparent 50%),
+		#f4f5ef;
+	box-shadow: 0 8px 18px rgb(53 79 83 / 12%);
+	content: '';
+	opacity: .8;
+}
+
+.page::before {
+	left: -48px;
+	transform: rotate(-18deg);
+}
+
+.page::after {
+	right: -48px;
+	transform: rotate(18deg);
+}
+
+.topbar {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 52px;
+	padding: 0 max(20vw, 24px);
+	background: var(--login-sky);
+	border-bottom: 1px solid #bfd1d6;
+	box-shadow: 0 2px 6px rgb(31 57 66 / 14%);
+}
+
+.topbar p {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin: 0;
+	color: #17212a;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.topbar .logo {
+	display: inline-block;
+	font-size: 23px;
+	line-height: 1;
+}
+
+main {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	flex: 1;
+	place-items: center;
+	padding: 38px 20px 26px;
+}
+
+.modal-wrapper {
+	width: min(100%, 360px);
+	padding: 20px;
+	border: 1px solid var(--login-border);
+	border-radius: 16px;
+	background: rgb(255 255 255 / 76%);
+	box-shadow: 0 7px 16px rgb(50 69 70 / 16%);
+}
+
+.modal-wrapper h2 {
+	max-width: 260px;
+	margin: 0;
+	color: var(--login-dark);
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 39px;
+	font-weight: 700;
+	line-height: .95;
+}
+
+.modal-wrapper img {
+	display: none;
+}
+
+.modal-wrapper > p {
+	margin: 9px 0 12px;
+	color: #263945;
+	font-size: 14px;
+	line-height: 1.2;
+}
+
+.modal-wrapper form {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0;
+}
+
+.modal-wrapper label {
+	margin: 6px 0 3px;
+	color: #1c2b33;
+	font-size: 13px;
+}
+
+.modal-wrapper input {
+	box-sizing: border-box;
+	width: 100%;
+	height: 30px;
+	padding: 4px 10px;
+	border: 1px solid #b4bfbd;
+	border-radius: 5px;
+	outline: none;
+	background: #fff;
+	color: var(--login-ink);
+	font: 14px 'DM Sans', sans-serif;
+	transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.modal-wrapper input:focus {
+	border-color: var(--login-green);
+	box-shadow: 0 0 0 2px rgb(61 156 112 / 18%);
+}
+
+.modal-wrapper form > a {
+	margin-top: 5px;
+	color: #1a2d3b;
+	font-size: 13px;
+	text-decoration: underline;
+}
+
+.modal-wrapper form > a:hover,
+.modal-wrapper > p:last-child a:hover {
+	color: var(--login-green-dark);
+}
+
+.modal-wrapper button {
+	width: 100%;
+	height: 30px;
+	margin-top: 13px;
+	border: 0;
+	border-radius: 5px;
+	background: var(--login-green);
+	color: #fff;
+	font: 600 14px 'DM Sans', sans-serif;
+	cursor: pointer;
+	box-shadow: 0 2px 3px rgb(32 81 59 / 20%);
+	transition: background-color .2s ease, transform .2s ease;
+}
+
+.modal-wrapper button:hover {
+	background: var(--login-green-dark);
+	transform: translateY(-1px);
+}
+
+.modal-wrapper > p:last-child {
+	margin: 15px 0 0;
+	color: #26333a;
+	text-align: center;
+	font-size: 13px;
+}
+
+.modal-wrapper a {
+	color: var(--login-ink);
+}
+
+.cool-stuff {
+	position: relative;
+	z-index: 1;
+	min-height: 69px;
+	border-top: 1px solid #cfdee1;
+	background-color: #eaf5fa;
+	background-image: radial-gradient(#c8dce3 1px, transparent 1px);
+	background-size: 28px 18px;
+}
+
+@media (max-width: 520px) {
+	.topbar {
+		padding: 0 18px;
+	}
+
+	main {
+		padding: 28px 14px 24px;
+	}
+
+	.modal-wrapper {
+		padding: 18px;
+		border-radius: 12px;
+	}
+
+	.modal-wrapper h2 {
+		font-size: 35px;
+	}
+
+	.page::before,
+	.page::after {
+		bottom: 80px;
+		width: 125px;
+		height: 145px;
+	}
+
+	.page::before {
+		left: -72px;
+	}
+
+	.page::after {
+		right: -72px;
+	}
+}
