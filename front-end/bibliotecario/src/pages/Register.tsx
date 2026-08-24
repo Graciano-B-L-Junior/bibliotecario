@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './styles/Register.css'
 
 function UserRegister() {
@@ -26,7 +27,7 @@ function UserRegister() {
                 <button type="submit">Cadastre-se</button>
 
                 <p>
-                    Já tem uma conta? <a href="">Entrar</a>
+                    Já tem uma conta? <Link to="/login">Entrar</Link>
                 </p>
             </form>
         </div>
