@@ -1,64 +1,29 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { api, getApiErrorMessage } from '../api/client'
+import type { StatusProgresso } from '../api/types'
 import './styles/NewBook.css'
 
 function NewBook() {
-    return (
-        <div className="new-book-page">
-            <header className="new-book-header">
-                <Link to="/dashboard" className="new-book-brand">
-                    <span>📖</span>
-                    <strong>Bibliotecário</strong>
-                </Link>
-                <Link to="/dashboard" className="back-to-dashboard">Voltar ao dashboard</Link>
-            </header>
+    const navigate = useNavigate()
+    const [nome, setNome] = useState('')
+    const [paginas, setPaginas] = useState('')
+    const [status, setStatus] = useState<StatusProgresso>('pretendo_ler')
+    const [paginaAtual, setPaginaAtual] = useState('0')
+    const [error, setError] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
-            <main className="new-book-main">
-                <section className="new-book-panel">
-                    <div className="new-book-title">
-                        <span className="new-book-icon">📚</span>
-                        <div>
-                            <p>Minha biblioteca</p>
-                            <h1>Adicionar novo livro</h1>
-                        </div>
-                    </div>
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault(); setError(''); setIsSubmitting(true)
+        try {
+            const book = await api.createLivro({ nome, paginas: Number(paginas) })
+            await api.createProgresso({ livro: book.id, status, pagina_atual: Number(paginaAtual) })
+            navigate('/dashboard', { replace: true })
+        } catch (requestError) { setError(getApiErrorMessage(requestError)) } finally { setIsSubmitting(false) }
+    }
 
-                    <form className="new-book-form">
-                        <label htmlFor="book-title">Título do livro</label>
-                        <input id="book-title" name="title" type="text" placeholder="Ex.: O Nome do Vento" required />
-
-                        <label htmlFor="book-author">Autor</label>
-                        <input id="book-author" name="author" type="text" placeholder="Nome do autor" required />
-
-                        <div className="new-book-fields">
-                            <div>
-                                <label htmlFor="book-genre">Gênero</label>
-                                <select id="book-genre" name="genre" defaultValue="">
-                                    <option value="" disabled>Selecione</option>
-                                    <option value="fantasia">Fantasia</option>
-                                    <option value="romance">Romance</option>
-                                    <option value="ficcao">Ficção</option>
-                                    <option value="manga">Mangá</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label htmlFor="book-status">Status</label>
-                                <select id="book-status" name="status" defaultValue="planejo-ler">
-                                    <option value="planejo-ler">Planejo ler</option>
-                                    <option value="lendo">Lendo</option>
-                                    <option value="concluido">Concluído</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <label htmlFor="book-notes">Observações <span>(opcional)</span></label>
-                        <textarea id="book-notes" name="notes" rows={4} placeholder="Adicione uma observação sobre este livro" />
-
-                        <button type="submit">Adicionar à biblioteca</button>
-                    </form>
-                </section>
-            </main>
-        </div>
-    )
+    return <div className="new-book-page"><header className="new-book-header"><Link to="/dashboard" className="new-book-brand"><span>📖</span><strong>Bibliotecário</strong></Link><Link to="/dashboard" className="back-to-dashboard">Voltar ao dashboard</Link></header><main className="new-book-main"><section className="new-book-panel"><div className="new-book-title"><span className="new-book-icon">📚</span><div><p>Minha biblioteca</p><h1>Adicionar novo livro</h1></div></div><form className="new-book-form" onSubmit={handleSubmit}><label htmlFor="book-title">Título do livro</label><input id="book-title" value={nome} onChange={(event) => setNome(event.target.value)} type="text" required /><label htmlFor="book-pages">Quantidade de páginas</label><input id="book-pages" value={paginas} onChange={(event) => setPaginas(event.target.value)} type="number" min="1" required /><label htmlFor="book-status">Status inicial</label><select id="book-status" value={status} onChange={(event) => setStatus(event.target.value as StatusProgresso)}><option value="pretendo_ler">Pretendo ler</option><option value="lendo">Lendo</option><option value="pausado">Pausado</option><option value="concluido">Concluído</option></select><label htmlFor="book-current-page">Página atual</label><input id="book-current-page" value={paginaAtual} onChange={(event) => setPaginaAtual(event.target.value)} type="number" min="0" required />{error && <p role="alert" className="form-error">{error}</p>}<button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Salvando...' : 'Adicionar à biblioteca'}</button></form></section></main></div>
 }
 
 export default NewBook

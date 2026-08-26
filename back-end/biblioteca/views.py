@@ -1,7 +1,17 @@
-from rest_framework import permissions, serializers, viewsets
+from rest_framework import generics, permissions, serializers, viewsets
 
 from .models import Evento, Livro, Progresso
-from .serializers import EventoSerializer, LivroSerializer, ProgressoSerializer
+from .serializers import (
+	EventoSerializer,
+	LivroSerializer,
+	ProgressoSerializer,
+	UserRegistrationSerializer,
+)
+
+
+class UserRegistrationView(generics.CreateAPIView):
+	serializer_class = UserRegistrationSerializer
+	permission_classes = [permissions.AllowAny]
 
 
 class LivroViewSet(viewsets.ModelViewSet):
